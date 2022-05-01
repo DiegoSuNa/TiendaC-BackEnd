@@ -1,11 +1,13 @@
 import express from 'express';
+import inventarioRoutes from './routes/inventario';
 
 const app = express();
 const port = 3000;
 
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+inventarioRoutes(app);
 
 app.get('/prueba/:id', async (req,res,next) =>{
     console.log('antes de la promesa')
