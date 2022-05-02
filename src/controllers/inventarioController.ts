@@ -1,6 +1,16 @@
-const obtenerInventarios = (req,res) =>{
-    res.send ('Se obtuvo el inventario')
-};
+import executeQuery from "../services/mysql.service";
+
+const obtenerInventarios = async(req,res,next) =>{
+    await executeQuery('SELECT * FROM invetario').then(response =>{
+        const data = {
+            message: `${response.length} datos encontrados`,
+            data: response.length > 0 ? response : null
+        };
+        res.json(data);
+    }).catch(error => {
+        next(error)
+    })
+}
 
 const obtenerInventario = (req,res) =>{
     res.send('Se obtuvo un producto')
