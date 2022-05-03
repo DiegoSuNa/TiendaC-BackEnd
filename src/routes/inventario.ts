@@ -1,14 +1,14 @@
 import { Router } from "express";
-import { actualizarInventarios, agregarInventario, elminarInventarios, obtenerInventario,obtenerInventarios } from "../controllers/inventarioController";
+import { actualizarProducto, agregarProducto, eliminarProducto, obtenerProducto,obtenerInventarios } from "../controllers/inventarioController";
 
 const inventarioRoutes = (app) => {
     const router = Router();
     app.use('/', router);
     app.get ('/obtenerInventarios', obtenerInventarios);
-    app.get ('/obtenerInventario/:id', obtenerInventario);
-    app.post ('/agregarInventario', agregarInventario);
-    app.put ('/actualizarInventario/:id', actualizarInventarios);
-    app.delete ('/eliminarInventario/:id', elminarInventarios);
+    app.get ('/obtenerProducto/:id', obtenerProducto);
+    app.post ('/agregarProducto', agregarProducto);
+    app.put ('/actualizarProducto/:id', actualizarProducto);
+    app.delete ('/eliminarProducto/:id', eliminarProducto);
 }
 
 export default inventarioRoutes;

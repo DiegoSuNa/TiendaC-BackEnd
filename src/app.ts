@@ -1,10 +1,11 @@
 import express from 'express';
 import inventarioRoutes from './routes/inventario';
-
+import ventasRoutes from './routes/venta';
 
 
 import errorHandler from './middleware/erros';
 import config from './config/config';
+
 
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 inventarioRoutes(app);
+ventasRoutes(app);
 
 
 app.use(errorHandler);
