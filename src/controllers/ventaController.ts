@@ -1,6 +1,6 @@
 import executeQuery from "../services/mysql.service";
 
-const obtenerProducto = async (req, res, next) => {
+const obtenerProductoVenta = async (req, res, next) => {
     const { id } = req.params;
     try {
         const response = await executeQuery(`SELECT * FROM inventario WHERE idInvetario = ${id}`);
@@ -14,7 +14,7 @@ const obtenerProducto = async (req, res, next) => {
     }
 };
 
-const actualizarProducto = (req,res,next) =>{
+const actualizarProductoVenta = (req,res,next) =>{
     const {cant_Prod_Unid, cant_Prod_Six, fech_Venta} = req.body;
     const {id} = req.params;
     executeQuery(`UPDATE inventario SET cant_Prod_Unid = ${cant_Prod_Unid}, cant_Prod_Six = ${cant_Prod_Six}, fech_Venta = '${fech_Venta}' WHERE idInventario = '${id}'`).then((response) =>{
@@ -25,7 +25,7 @@ const actualizarProducto = (req,res,next) =>{
     });
 };
 
-const eliminarProducto = (req,res,next) =>{
+const eliminarProductoVenta = (req,res,next) =>{
     executeQuery(`DELETE FROM inventario WHERE idInventario = '${req.params.id}'`).then((response) => {
         res.json({message: response.affectedRows > 0 ? 'deleted' : `No existe registro con id: ${req.params.id}`});
     }).catch((error) => {
@@ -33,4 +33,4 @@ const eliminarProducto = (req,res,next) =>{
     });
 };
 
-export { obtenerProducto, actualizarProducto, eliminarProducto };
+export { obtenerProductoVenta, actualizarProductoVenta, eliminarProductoVenta };
